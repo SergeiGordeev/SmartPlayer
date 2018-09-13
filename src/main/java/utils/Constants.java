@@ -8,6 +8,9 @@ public class Constants {
 //    public static final String DOMAIN_PATH = "https://1xdxt.host/";
     public static final String DOMAIN_PATH = "https://1xqwk.host/";
     public static final String CLASS_NAME_SELECTOR = "fSports";
-    public static final String GAME_NAME_RU = "Волейбол";
-    public static final String GAME_NAME_EN = "Volleyball";
+//    public static final String GAME_NAME_RU = "Волейбол";
+//    public static final String GAME_NAME_EN = "Volleyball";
+
+    public static final String GAME_NAME_RU = "Футбол";
+    public static final String GAME_NAME_EN = "Football";
 }

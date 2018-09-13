@@ -29,20 +29,21 @@ public class Main
         driver.get(DOMAIN_PATH);
         driver.manage().deleteAllCookies();
 
-        List<WebElement> elements = driver.findElements(By.className(CLASS_NAME_SELECTOR));
+        goToGamePage();
+        printGameItemNames();
 
-        goToGamePage(elements);
         driver.quit();
     }
 
-    private static void goToGamePage(List<WebElement> elements)
+    private static void goToGamePage()
     {
-        for(WebElement element : elements)
+        List<WebElement> games = driver.findElements(By.className(CLASS_NAME_SELECTOR));
+        for(WebElement game : games)
         {
-            if(null != element.getAttribute("title"))
+            if(null != game.getAttribute("title"))
             {
-                String title = element.getAttribute("title");
-                String gameUrl = element.getAttribute("data-href");
+                String title = game.getAttribute("title");
+                String gameUrl = game.getAttribute("data-href");
 
                 if (title.equals(GAME_NAME_EN) || title.equals(GAME_NAME_RU))
                 {
@@ -50,6 +51,17 @@ public class Main
                     return;
                 }
             }
+        }
+    }
+
+    //TODO change method name like 'getGame' and return all block with game name, koeff and fora.
+    private static void printGameItemNames()
+    {
+        List<WebElement> gameItems = driver.findElements(By.className("c-events__teams"));
+        for(WebElement gameItem : gameItems)
+        {
+            String gameTitle = gameItem.getAttribute("title");
+            System.out.println(gameTitle);
         }
     }
 }
