@@ -45,7 +45,7 @@ public class Main
                 String title = game.getAttribute("title");
                 String gameUrl = game.getAttribute("data-href");
 
-                if (title.equals(GAME_NAME_EN) || title.equals(GAME_NAME_RU))
+                if (title.equals(VOLLEYBALL_GAME_NAME_EN) || title.equals(VOLLEYBALL_GAME_NAME_RU))
                 {
                     driver.get(driver.getCurrentUrl() + gameUrl);
                     return;
