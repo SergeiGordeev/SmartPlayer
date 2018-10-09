@@ -5,6 +5,7 @@ import driver.BrowserDriver;
 import injector.InjectorModule;
 import injector.annotations.Chrome;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -45,7 +46,7 @@ public class Main
                 String title = game.getAttribute("title");
                 String gameUrl = game.getAttribute("data-href");
 
-                if (title.equals(VOLLEYBALL_GAME_NAME_EN) || title.equals(VOLLEYBALL_GAME_NAME_RU))
+                if (title.equals(GAME_NAME_EN) || title.equals(GAME_NAME_RU))
                 {
                     driver.get(driver.getCurrentUrl() + gameUrl);
                     return;
@@ -65,6 +66,33 @@ public class Main
             game.setName(gameTitle);
 
             new JSONDataSender(game).sendData();
+        }
+    }
+
+    private void readMathesData () {
+        List<WebElement> gameItems = driver.findElements(By.xpath("//div[contains(@class, 'c-events__item_col')]"));
+        for (WebElement element : gameItems) {
+            WebElement scoreboard;
+            WebElement bets;
+            try {
+                scoreboard = element.findElement(By.className("c-events-scoreboard"));
+                bets = element.findElement(By.className("c-bets"));
+            }catch (NoSuchElementException nse)
+            {
+                continue;
+            }
+            WebElement math = scoreboard.findElement(By.className("c-events__teams"));
+            String title = math.getAttribute("title");
+            System.out.println("title: " + title);
+
+            try {
+                WebElement rcLite = bets.findElement(By.xpath("//a[contains(@class, 'rc_lite')]"));
+                String dataCoef = rcLite.getAttribute("data-coef");
+                System.out.println("dataCoef :" + dataCoef);
+            }catch (NoSuchElementException nse)
+            {
+                continue;
+            }
         }
     }
 }

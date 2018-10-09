@@ -10,6 +10,6 @@ public class Constants {
     public static final String DOMAIN_PATH = "https://1xstavka.ru/en/live/Volleyball/";
     public static final String CLASS_NAME_SELECTOR = "fSports";
 
-    public static final String GAME_NAME_RU = "Футбол";
-    public static final String GAME_NAME_EN = "Football";
+    public static final String GAME_NAME_RU = "Волейблоо";
+    public static final String GAME_NAME_EN = "Voleyball";
 }
