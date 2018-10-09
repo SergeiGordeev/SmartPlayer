@@ -61,7 +61,10 @@ public class Main
         for(WebElement gameItem : gameItems)
         {
             String gameTitle = gameItem.getAttribute("title");
-            System.out.println(gameTitle);
+            Game game = new Game();
+            game.setName(gameTitle);
+
+            new JSONDataSender(game).sendData();
         }
     }
 }
