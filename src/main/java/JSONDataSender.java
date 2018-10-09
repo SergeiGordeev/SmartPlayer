@@ -35,11 +35,11 @@ class JSONDataSender {
         try {
             executeHttpRequest(jsonData, httpPost);
         } catch (UnsupportedEncodingException e) {
-            System.out.println("error while encoding api url : " + e);
+            System.out.println("Error while encoding api url : " + e);
         } catch (IOException e) {
-            System.out.println("ioException occured while sending http request : " + e);
+            System.out.println("IoException occured while sending http request : " + e);
         } catch (Exception e) {
-            System.out.println("exception occured while sending http request : " + e);
+            System.out.println("Exception occured while sending http request : " + e);
         } finally {
             httpPost.releaseConnection();
         }
