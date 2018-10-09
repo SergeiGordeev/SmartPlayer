@@ -7,15 +7,25 @@
     <groupId>SmartPlayer</groupId>
     <artifactId>SmartPlayer</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.14.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
@@ -26,8 +36,10 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
     </dependencies>
-
-
 </project>
