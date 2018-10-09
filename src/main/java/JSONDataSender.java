@@ -17,15 +17,15 @@ class JSONDataSender {
     }
 
     void sendData() {
-        JSONObject user = new JSONObject();
-        user.put("GAMER", game.getName());
-        String jsonData = user.toString();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("GAMER", game.getName().replace('\u2014', '-'));
+        String jsonData = jsonObject.toString();
         this.executeReq(jsonData, this.createConnectivity(Constants.DATA_VIEWER_PAGE));
     }
 
     private HttpPost createConnectivity(String restUrl) {
         HttpPost post = new HttpPost(restUrl);
-        post.setHeader("Content-Type", "application/json");
+        post.setHeader("Content-Type", "application/json; charset=utf-8");
         post.setHeader("Accept", "application/json");
         post.setHeader("X-Stream", "true");
         return post;
